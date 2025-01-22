@@ -1,0 +1,40 @@
+.alert{
+    color:red;
+    margin-bottom: 5%;
+}
+
+.link{
+    color:rgb(74, 74, 236);
+    font-style: normal;
+    cursor: pointer;
+}
+
+.link:hover{
+    font-size: larger;
+}
+
+.mleft{
+    margin-left: 10%;
+}
+
+.card-3d {
+    background-color: lightgray;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.card-3d:hover {
+    transform: rotateY(10deg) rotateX(5deg) translateZ(10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(145deg, #f0f0f0, #ffffff);
+}
+
+
+.text-red{
+    color:red;
+}
