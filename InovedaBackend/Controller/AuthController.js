@@ -11,7 +11,7 @@ const signUpUser = async(req,res)=>{
     try{
         const {name,email,password,prn,teamMembers} = req.body;
         const user = await UserModel.findOne({$or:[{email:email},{prn:prn}]});
-        console.log(user);
+
         if(user)
             return res.status(409).send({message:'User already exists',status:false});
 
@@ -24,13 +24,13 @@ const signUpUser = async(req,res)=>{
         userModel.password = await bcrypt.hash(password,10); // field and salt
 
         const result = await userModel.save();
-        console.log(result);
+
         if(result)
             return res.status(201).send({message:'Sign Up successful',status:true});
         else 
             return res.status(401).send({message:'Some error occured',status:false});
     }catch(err){
-        console.log(err);
+
         return res.status(400).send({err});
     }
 }

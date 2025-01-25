@@ -38,3 +38,31 @@
 .text-red{
     color:red;
 }
+
+.placeholder-custom::placeholder {
+    color: black; /* Change to your desired color */
+  }
+  
+  .custom-modal-body {
+    max-height: 63vh;
+    overflow-y: auto;
+    display: flex;
+    background-color: #dedede;
+    justify-content: center; /* Horizontally center */
+  }
+  
+  .pdf-container {
+    width: 100%;
+    max-width: 90%; /* Adjust the width based on your preference */
+    height: auto;
+    padding: 5%;
+    margin-bottom: 2%;
+    display: block; /* Ensure content starts from the top */
+    margin-top: 0; /* No additional vertical centering */
+  }
+
+  element.style {
+    display: block;
+    user-select: none;
+    margin-bottom: 1%;
+}

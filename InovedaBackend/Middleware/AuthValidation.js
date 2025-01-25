@@ -119,7 +119,7 @@ const loginValidationAdmin = (req,res,next) =>{
 const userValidation = (req,res,next) =>{
     try{
         const token = req.headers['authorization']?.split(' ')[1];
-
+        //console.log('alo');
         if(!token)
             return res.status(403).send({message:'Token Required'});
     
@@ -128,6 +128,7 @@ const userValidation = (req,res,next) =>{
                 return res.status(401).send({message:'Invalid Token',err})
             else{
                 req.user = decoded; // adding user info into request
+                //console.log('gelo')
                 next(); // when token is valid transfer control to taskController / other controller
             }  
         })

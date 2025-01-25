@@ -6,7 +6,8 @@ const multer  = require('multer');
 
 const path = require('path');
 const { userValidation } = require('../Middleware/AuthValidation');
-const { uploadInfo } = require('../Controller/UploadUserController');
+const { uploadInfo, getUpload, setComment, getComment } = require('../Controller/UploadUserController');
+const { uploadValidation, commentValidation } = require('../Middleware/CourseValidator');
 
 
 const storage = multer.diskStorage({
@@ -23,5 +24,11 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 router.post('/uploadinfo',upload.single("pdf"),userValidation,uploadInfo);
+
+router.post('/getUpload',userValidation,uploadValidation,getUpload);
+
+router.patch('/setComment',userValidation,commentValidation,setComment);
+
+router.get('/getComment/:id',userValidation,getComment);
 
 module.exports = router;

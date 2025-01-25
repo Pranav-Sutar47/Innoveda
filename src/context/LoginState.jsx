@@ -6,6 +6,7 @@ export default function LoginState(props){
     const [showBtn, setShowBtn] = useState(true);
     const [user,setUser] = useState({});
     const [clientInfo,setClientInfo ] = useState({});
+    //const [showModel,setShowModel] = useState(0);
 
     const getClientInfo = async() =>{
         try{
@@ -57,8 +58,7 @@ export default function LoginState(props){
                         subjectTitle: subject.subjectTitle
                     })) : []
                 };
-                //console.log('result',result);
-                //console.log(result.subjects);
+
                 setUser(result);
 
             }else if(json.status && json.switch === 2){

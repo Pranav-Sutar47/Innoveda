@@ -24,8 +24,7 @@ export default function UserUpload() {
     },[clientInfo]);
 
     const handleClick = (data) =>{
-        console.log(data);
-        navigate('/usercard',{state:{data}});
+        navigate('/usercard',{state:{data,userId:clientInfo.userId}});
     }
 
     return (

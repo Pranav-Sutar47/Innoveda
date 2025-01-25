@@ -70,7 +70,7 @@ export default function Login() {
             localStorage.setItem('loginType','faculty');
             showToast(json.message,'success');
             setLogOut(true);
-            navigate('/adminHome');
+            navigate('/teacherHome');
           }else 
             showToast(json.message,'error');
       }

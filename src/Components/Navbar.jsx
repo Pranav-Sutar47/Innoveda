@@ -28,7 +28,6 @@ function NavBar() {
   },[setDisplay,logOut])
 
   const handleLogOut = ()=>{
-    console.log('alo')
     setLogOut(false);
     localStorage.clear();
     setDisplay(false);
@@ -53,8 +52,23 @@ function NavBar() {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <Nav className="justify-content-end flex-grow-1 pe-3">
-            <Nav.Link as={Link} to="/userHome">Home</Nav.Link>
-            <Nav.Link as={Link} to="/useruploads">Uploads</Nav.Link>
+            {
+              localStorage.getItem('loginType') === 'student' ? 
+              (
+                <>
+                <Nav.Link as={Link} to="/userHome">Home</Nav.Link>
+                <Nav.Link as={Link} to="/useruploads">Uploads</Nav.Link>
+                </>
+              )
+              :
+              (
+                <>
+                  <Nav.Link as={Link} to="/teacherHome">Home</Nav.Link>
+                  <Nav.Link as={Link} to="/viewUpload">View Uploads</Nav.Link>
+                </>
+              )
+            }
+            
             {
               display && 
             <Button variant='outline-danger' onClick={handleLogOut}>Log Out</Button>

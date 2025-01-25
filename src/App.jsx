@@ -8,6 +8,8 @@ import UserHome from "./Components/UserHome"
 import UserUpload from "./Components/UserUpload"
 import UserUploadCard from "./Components/UserUploadCard"
 import AdminNavbar from "./Components/Admin/AdminNavbar"
+import Home from "./Components/Admin/Home"
+import ViewUploads from "./Components/Admin/ViewUploads"
 
 function App() {
 
@@ -53,7 +55,9 @@ function App() {
           <Route path="/userHome" element={<UserHome/>}/>
           <Route path="/useruploads" element={<UserUpload/>}/>
           <Route path="/usercard" element={<UserUploadCard/>}/>
-          <Route path="/adminHome" element={<AdminNavbar/>}/>
+          <Route path='/viewUpload' element={<ViewUploads/>}/>
+          {/* <Route path="/adminHome" element={<AdminNavbar/>}/> */}
+          <Route path="/teacherHome" element={<Home/>}/>
         </Routes>
       </BrowserRouter>
       </LoginState>

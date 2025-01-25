@@ -16,18 +16,42 @@ export default function UserUploadCard() {
 
     const location = useLocation();
     const data = location.state?.data;
+    const userId = location.state?.userId;
     const [load,setLoad] = useState(false);
     const [show,setShow] = useState(false);
     const [name,setName] = useState('Uploaded File');
     const [display,setDisplay] = useState(true); // button should display
     const [del,setDel] = useState(false);
+    const [userData,setUserData] = useState({});
+    const fetchData = async()=>{
+        try{
+            let myHeaders = new Headers();
+            myHeaders.append('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    
+            let url = String(import.meta.env.VITE_API);
+            url += `/getComment/${userId}`;
+
+            const response = await fetch(url,{
+                method:'GET',
+                headers:myHeaders,
+                mode:'cors'
+            });
+
+            const json = await response.json();
+
+            setUserData(json.detail);
+        }catch(err){
+            console.log(err);
+        }
+    }
 
     useEffect(()=>{
-        console.log(data);
         if(data.status==='Submitted'){
             setShow(true);
             setDisplay(false); // button should not display
         }
+        if(userId)
+            fetchData();
     },[]);
 
     const uploadDoc = async(val) =>{
@@ -51,7 +75,8 @@ export default function UserUploadCard() {
                 body:formData
             });
     
-            //const json = await response.json();
+            const json = await response.json();
+
             if(json.status){
                 showToast(json.message,'success');
                 setShow(true);
@@ -85,8 +110,6 @@ export default function UserUploadCard() {
                 courseTitle:data.subjectTitle
             };
 
-            //console.log(obj);
-
             const response = await fetch(url,{
                 mode:'cors',
                 headers:myHeaders,
@@ -95,7 +118,6 @@ export default function UserUploadCard() {
             });
 
             const json = await response.json();
-            console.log(json);
 
             if(json.status){
                 setShow(false);
@@ -153,6 +175,12 @@ export default function UserUploadCard() {
                         </h3>
                         <Tooltip id="my-tooltip" />
                     </div>
+                }
+            </div>
+            <div>
+                {
+                    userData.comment && 
+                    <div className='container mt-5 font-bold text-black'>Comment : {userData.comment}</div>
                 }
             </div>
         </div>

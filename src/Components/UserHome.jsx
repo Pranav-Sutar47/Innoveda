@@ -51,7 +51,6 @@ export default function UserHome() {
                 };
             })
 
-            console.log(data);
 
             let url = String(import.meta.env.VITE_USER);
             url += '/addClientInfo';
@@ -59,7 +58,7 @@ export default function UserHome() {
             const myHeaders = new Headers();
             myHeaders.append('Content-Type', 'application/json');
             myHeaders.append('Authorization', `Bearer ${localStorage.getItem('token')}`);
-            console.log(JSON.stringify(data))
+ 
             const response = await fetch(url, {
                 method: 'POST',
                 headers: myHeaders,
@@ -92,7 +91,6 @@ export default function UserHome() {
     useEffect(() => {
         reset();
         getUser(); // Fetch user data
-        console.log('hi');
     }, [formSubmit,reset]); // Runs once on mount
 
     useEffect(() => {
